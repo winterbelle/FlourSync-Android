@@ -13,6 +13,7 @@ interface ProductDao {
     @Query("SELECT * FROM product WHERE category = :category")
     suspend fun getProductByCategory(category: String): List<Product>
 
+    //returns a list of all the categories (DISTINCT) makes sure there are no duplicates.
     @Query("SELECT DISTINCT category FROM product")
     suspend fun getAllCategories(): List<String>
 }
