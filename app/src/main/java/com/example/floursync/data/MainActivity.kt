@@ -1,10 +1,9 @@
-package com.example.floursync
+package com.example.floursync.data
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.floursync.databinding.ActivityMainBinding
-import com.example.floursync.ui.categories.CategoryActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,10 +15,11 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // navigate to the Category screen
-        val intent = Intent(this, CategoryActivity::class.java)
+        // Navigate to the Login/Signup screen
+        val intent = Intent(this, SignupLogin::class.java)
         startActivity(intent)
 
+        // Close MainActivity so user can't navigate back to it
         finish()
     }
 }
