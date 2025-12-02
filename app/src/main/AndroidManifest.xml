@@ -22,7 +22,8 @@
         </activity>
         <activity android:name=".ui.categories.CategoryActivity" />
         <activity android:name=".ui.menu.MenuItemsActivity" />
-
+        <activity android:name=".ui.checkout.CheckoutActivity"/>
+        <activity android:name=".ui.confirmation.OrderConfirmationActivity" />
     </application>
 
 </manifest>

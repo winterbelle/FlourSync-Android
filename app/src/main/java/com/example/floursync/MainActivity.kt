@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.floursync.databinding.ActivityMainBinding
-import com.example.floursync.ui.categories.CategoryActivity
+import com.example.floursync.ui.checkout.CheckoutActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         // navigate to the Category screen
-        val intent = Intent(this, CategoryActivity::class.java)
+        val intent = Intent(this, CheckoutActivity::class.java)
         startActivity(intent)
 
         finish()
