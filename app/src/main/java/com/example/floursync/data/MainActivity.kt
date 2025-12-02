@@ -18,8 +18,6 @@ class MainActivity : AppCompatActivity() {
         // Navigate to the Login/Signup screen
         val intent = Intent(this, SignupLogin::class.java)
         startActivity(intent)
-
-        // Close MainActivity so user can't navigate back to it
         finish()
     }
 }

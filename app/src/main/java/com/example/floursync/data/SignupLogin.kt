@@ -1,4 +1,6 @@
-package com.example.floursync.data;
+package com.example.floursync.data
+
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -29,14 +31,22 @@ class SignupLogin : AppCompatActivity() {
             val user = SignupLoginDao.getUser(username)
 
             when {
-                user == null ->
+                user == null -> {
                     Toast.makeText(this, "User not found", Toast.LENGTH_SHORT).show()
+                }
 
-                user.password != password ->
+                user.password != password -> {
                     Toast.makeText(this, "Incorrect password", Toast.LENGTH_SHORT).show()
+                }
 
-                else ->
+                else -> {
                     Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show()
+
+                    val intent = Intent(this, ProductsActivity::class.java)
+                    startActivity(intent)
+
+                    finish()
+                }
             }
         }
     }

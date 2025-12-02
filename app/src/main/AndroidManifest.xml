@@ -12,18 +12,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FlourSync">
 
-        <activity
-            android:name=".data.SignupLogin"
-            android:exported="true" />
-
-        <activity
-            android:name=".data.MainActivity"
+        <activity android:name=".data.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".data.SignupLogin" />
+        <activity android:name=".data.ProductsActivity" />
+
 
         <activity android:name=".ui.categories.CategoryActivity" />
         <activity android:name=".ui.menu.MenuItemsActivity" />
