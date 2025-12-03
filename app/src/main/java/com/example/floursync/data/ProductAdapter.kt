@@ -3,7 +3,9 @@ package com.example.floursync.adapter
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.example.floursync.data.CartManager
 import com.example.floursync.data.Product
 import com.example.floursync.databinding.ItemProductBinding
 
@@ -35,7 +37,7 @@ class ProductAdapter(
         holder.binding.tvProductStock.text = "Stock: ${product.stockQty}"
 
         val resId = context.resources.getIdentifier(
-            product.imagePath,   // e.g. "croissant"
+            product.imagePath,
             "drawable",
             context.packageName
         )
@@ -47,8 +49,14 @@ class ProductAdapter(
         }
 
         holder.binding.btnAddToCart.setOnClickListener {
-            onAddToCartClick(product)
+            CartManager.addItem(product)
+            Toast.makeText(
+                holder.itemView.context,
+                "${product.name} added to cart",
+                Toast.LENGTH_SHORT
+            ).show()
         }
+
     }
 
     override fun getItemCount(): Int = productList.size

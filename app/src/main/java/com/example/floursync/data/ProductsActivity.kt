@@ -1,8 +1,10 @@
 package com.example.floursync.data
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.floursync.R
 import com.example.floursync.adapter.ProductAdapter
 import com.example.floursync.databinding.ActivityProductsBinding
 
@@ -18,8 +20,39 @@ class ProductsActivity : AppCompatActivity() {
         binding = ActivityProductsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.btnOpenCart.setOnClickListener {
+            toggleCart()
+        }
+
+
         setupRecyclerView()
+        loadCartFragment()
+
     }
+
+    private fun toggleCart() {
+        if (binding.cartFragmentContainer.visibility == View.GONE) {
+            binding.cartFragmentContainer.visibility = View.VISIBLE
+
+            val fragment = supportFragmentManager.findFragmentById(R.id.cartFragmentContainer)
+            if (fragment is CartFragment) {
+                fragment.refreshCart()
+            }
+
+
+        } else {
+            binding.cartFragmentContainer.visibility = View.GONE
+        }
+    }
+
+
+    private fun loadCartFragment() {
+        val fragment = CartFragment()
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.cartFragmentContainer, fragment)
+            .commit()
+    }
+
 
     private fun setupRecyclerView() {
         val products = listOf(
@@ -110,12 +143,13 @@ class ProductsActivity : AppCompatActivity() {
         )
 
         adapter = ProductAdapter(this, products) { product ->
-            // TODO: handle Add to Cart click later
-            // e.g. show a Toast or add to Room cart table
         }
 
         binding.rvProducts.layoutManager = GridLayoutManager(this, 2)
         binding.rvProducts.adapter = adapter
 
+
+
     }
+
 }
