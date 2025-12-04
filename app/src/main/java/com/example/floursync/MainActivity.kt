@@ -1,9 +1,11 @@
-package com.example.floursync.data
+package com.example.floursync
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.floursync.ui.login.SignupLogin
 import com.example.floursync.databinding.ActivityMainBinding
+import com.example.floursync.data.DatabaseSeeder
 
 class MainActivity : AppCompatActivity() {
 
@@ -11,6 +13,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        DatabaseSeeder.seedDatabase(this)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)

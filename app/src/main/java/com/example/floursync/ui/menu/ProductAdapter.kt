@@ -1,5 +1,6 @@
-package com.example.floursync.adapter
+package com.example.floursync.ui.menu
 
+import android.R
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -45,7 +46,7 @@ class ProductAdapter(
         if (resId != 0) {
             holder.binding.imgProduct.setImageResource(resId)
         } else {
-            holder.binding.imgProduct.setImageResource(android.R.drawable.ic_menu_report_image)
+            holder.binding.imgProduct.setImageResource(R.drawable.ic_menu_report_image)
         }
 
         holder.binding.btnAddToCart.setOnClickListener {
@@ -61,8 +62,9 @@ class ProductAdapter(
 
     override fun getItemCount(): Int = productList.size
 
-    fun setData(newList: List<Product>) {
-        productList = newList
+    fun updateProducts(newProducts: List<Product>) {
+        productList = newProducts
         notifyDataSetChanged()
     }
 }
+

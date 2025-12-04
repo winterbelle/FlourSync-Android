@@ -7,15 +7,15 @@ import androidx.room.RoomDatabase
 
 //generates a SQLiteDB using the entities (tables) listed.
 @Database(
-    entities = [Employee::class, Product::class],
-    version = 1,
+    entities = [User::class, Product::class],
+    version = 2, //version updated due to schema change.
     exportSchema = false //schema files do not need to be saved.
 )
 
 //lets room generate DAO code.
 abstract class AppDatabase : RoomDatabase() {
-    abstract fun EmployeeDao(): EmployeeDao
-    abstract fun ProductDao(): ProductDao
+    abstract fun userDao(): UserDao
+    abstract fun productDao(): ProductDao
 
     companion object {
         @Volatile private var instance: AppDatabase? = null

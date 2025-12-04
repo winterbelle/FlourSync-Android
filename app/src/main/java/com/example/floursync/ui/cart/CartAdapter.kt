@@ -1,8 +1,10 @@
-package com.example.floursync.data
+package com.example.floursync.ui.cart
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.floursync.data.CartManager
+import com.example.floursync.data.Product
 import com.example.floursync.databinding.CartItemBinding
 
 class CartAdapter(private val listener: CartListener) :

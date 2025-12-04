@@ -13,34 +13,98 @@ object DatabaseSeeder {
         val db = AppDatabase.getDatabase(context)
         CoroutineScope(Dispatchers.IO).launch {
             //insert products
-            var products = listOf(
-                Product(name = "Triple Decker", category = "Cakes", price = 19.99, imagePath = "cake_tripleDecker", stockQty = 12),
-                Product(name = "Red Velvet", category = "Cakes", price = 19.99, imagePath = "cake_redVelvet", stockQty = 10),
-                Product(name = "Carrot Cake", category = "Cakes", price = 21.99, imagePath = "cake_carrot", stockQty = 15),
-                Product(name = "Angel Food", category = "Cakes", price = 16.99, imagePath = "cake_angelFood", stockQty = 7),
-                Product(name = "Black Forest", category = "Cakes", price = 17.99, imagePath = "cake_blackForest", stockQty = 8),
-                Product(name = "Devil's Food", category = "Cakes", price = 16.99, imagePath = "cake_devilsFood", stockQty = 8),
-                Product(name = "Vanilla Buttercream", category = "Cakes", price = 19.99, imagePath = "cake_vanilla", stockQty = 5),
-                Product(name = "German Chocolate", category = "Cakes", price = 19.99, imagePath = "cake_german", stockQty = 6),
-                Product(name = "Tres Leches", category = "Cakes", price = 25.99, imagePath = "cake_tresLeches", stockQty = 12),
-                Product(name = "Puff Pastry", category = "Pastries", price = 3.50, imagePath = "pastry_puff", stockQty = 20),
-                Product(name = "Cannoli", category = "Pastries", price = 6.00, imagePath = "pastry_cannoli", stockQty = 57),
-                Product(name = "Chocolate Covered Strawberries", category = "Pastries", price = 3.50, imagePath = "pastry_strawberries", stockQty = 30),
-                Product(name = "Lobster Tails", category = "Pastries", price = 6.50, imagePath = "pastry_lobsterTails", stockQty = 10),
-                Product(name = "Eclair", category = "Pastries", price = 4.50, imagePath = "pastry_eclair", stockQty = 12),
-                Product(name = "French Macron", category = "Pastries", price = 3.69, imagePath = "pastry_frenchMacroons", stockQty = 9),
-                Product(name = "Mini Cannoli", category = "Pastries", price = 3.50, imagePath = "pastry_miniCannoli", stockQty = 68),
-                Product(name = "Mixed Fruit Tarts", category = "Pastries", price = 5.50, imagePath = "pastry_MFT", stockQty = 8),
-                Product(name = "Strawberry Tart", category = "Pastries", price = 5.50, imagePath = "pastry_strawberryTart", stockQty = 9),
-                Product(name = "Berry Tart", category = "Pastries", price = 5.50, imagePath = "pastry_berryTart", stockQty = 8),
-                Product(name = "Croissant", category = "Breakfast", price = 4.29, imagePath = "breakfast_croissant", stockQty = 12),
-                Product(name = "Chocolate Croissant", category = "Breakfast", price = 4.50, imagePath = "breakfast_chocoCroissant", stockQty = 5),
-                Product(name = "Cinnamon Roll", category = "Breakfast", price = 4.29, imagePath = "breakfast_cinnamonRoll", stockQty = 4),
-                Product(name = "Cheese Danish", category = "Breakfast", price = 4.75, imagePath = "breakfast_cheeseDanish", stockQty = 2),
-                Product(name = "Apple Turnover", category = "Breakfast", price = 4.75, imagePath = "breakfast_appleTurnover", stockQty = 2),
+            val count = db.productDao().countProducts()
 
-            )
-            db.ProductDao().insertAll(products)
+            if (count == 0) {
+                val products = listOf(
+                    Product(
+                        name = "Baguettes",
+                        category = "Bread",
+                        price = 4.99,
+                        imagePath = "baguettes",
+                        stockQty = 10
+                    ),
+                    Product(
+                        name = "Big Cookie",
+                        category = "Cookies",
+                        price = 2.49,
+                        imagePath = "bigcookie",
+                        stockQty = 20
+                    ),
+                    Product(
+                        name = "3\" Cake",
+                        category = "Cake",
+                        price = 9.99,
+                        imagePath = "cake3inch",
+                        stockQty = 8
+                    ),
+                    Product(
+                        name = "4\" Cake",
+                        category = "Cake",
+                        price = 12.99,
+                        imagePath = "cake4inch",
+                        stockQty = 6
+                    ),
+                    Product(
+                        name = "7\" Cake",
+                        category = "Cake",
+                        price = 19.99,
+                        imagePath = "cake7inch",
+                        stockQty = 4
+                    ),
+                    Product(
+                        name = "8\" Cake",
+                        category = "Cake",
+                        price = 24.99,
+                        imagePath = "cake8inch",
+                        stockQty = 3
+                    ),
+                    Product(
+                        name = "Challah Bread",
+                        category = "Bread",
+                        price = 6.49,
+                        imagePath = "challahbread",
+                        stockQty = 5
+                    ),
+                    Product(
+                        name = "Cookies by the Pound",
+                        category = "Cookies",
+                        price = 14.99,
+                        imagePath = "cookiesbythepound",
+                        stockQty = 7
+                    ),
+                    Product(
+                        name = "Mini Cupcakes",
+                        category = "Cupcakes",
+                        price = 11.99,
+                        imagePath = "minicupcakes",
+                        stockQty = 12
+                    ),
+                    Product(
+                        name = "Mini Pastries",
+                        category = "Pastries",
+                        price = 13.99,
+                        imagePath = "minipastries",
+                        stockQty = 9
+                    ),
+                    Product(
+                        name = "Muffins",
+                        category = "Bread",
+                        price = 8.99,
+                        imagePath = "muffins",
+                        stockQty = 15
+                    ),
+                    Product(
+                        name = "Semolina Roll",
+                        category = "Bread",
+                        price = 3.49,
+                        imagePath = "semolinaroll",
+                        stockQty = 18
+                    )
+                )
+
+                db.productDao().insertAll(products)
+            }
         }
     }
 }
