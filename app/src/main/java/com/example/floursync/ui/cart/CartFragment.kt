@@ -1,6 +1,7 @@
 package com.example.floursync.ui.cart
 
 import android.os.Bundle
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.floursync.data.CartManager
 import com.example.floursync.databinding.FragmentCartBinding
+import com.example.floursync.ui.checkout.CheckoutActivity
 
 class CartFragment : Fragment() {
 
@@ -34,9 +36,7 @@ class CartFragment : Fragment() {
             }
         })
 
-        binding.cartRecyclerView.layoutManager =
-            LinearLayoutManager(requireContext())
-
+        binding.cartRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.cartRecyclerView.adapter = adapter
 
         // Load current cart items
@@ -44,7 +44,19 @@ class CartFragment : Fragment() {
 
         // Update total price
         binding.tvTotal.text = "Total: $${CartManager.totalPrice()}"
+
+        // ⭐ MOVE CHECKOUT HERE ⭐
+        binding.btnCheckout.setOnClickListener {
+
+            val total = CartManager.totalPrice()
+
+            val intent = Intent(requireContext(), CheckoutActivity::class.java)
+            intent.putExtra("total", total)
+
+            startActivity(intent)
+        }
     }
+
 
     // Refresh list if fragment becomes visible again
     override fun onResume() {

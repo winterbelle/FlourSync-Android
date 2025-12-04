@@ -40,6 +40,7 @@ class ProductsActivity : AppCompatActivity() {
         }
     }
 
+
     private fun toggleCart() {
         if (binding.cartFragmentContainer.visibility == View.GONE) {
             binding.cartFragmentContainer.visibility = View.VISIBLE
@@ -85,4 +86,6 @@ class ProductsActivity : AppCompatActivity() {
             }
         }
     }
+
+
 }

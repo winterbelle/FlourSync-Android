@@ -19,8 +19,12 @@ class CheckoutActivity: AppCompatActivity() {
         binding = ActivityCheckoutBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //show final total
-        binding.tvOrderTotal.text = "Total: $${String.format("%.2f", orderTotal)}"
+        binding.topAppBar.setNavigationOnClickListener {
+            finish()
+        }
+
+        val total = intent.getDoubleExtra("total", 0.0)
+        binding.tvOrderTotal.text = "Total: $${"%.2f".format(total)}"
 
         //handle placing order
         binding.btnPlaceOrder.setOnClickListener {

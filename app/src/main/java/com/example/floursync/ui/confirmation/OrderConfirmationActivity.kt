@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.floursync.databinding.ActivityOrderConfirmationBinding
 import com.example.floursync.ui.categories.CategoryActivity
+import com.example.floursync.data.CartManager
 
 class OrderConfirmationActivity: AppCompatActivity() {
     private lateinit var binding: ActivityOrderConfirmationBinding
@@ -30,6 +31,8 @@ class OrderConfirmationActivity: AppCompatActivity() {
         """.trimIndent()
 
         binding.btnNewOrder.setOnClickListener {
+            CartManager.clear()
+
             val intent = Intent(this, CategoryActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
 
