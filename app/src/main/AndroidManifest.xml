@@ -23,6 +23,8 @@
         <activity android:name=".ui.categories.CategoryActivity" />
         <activity android:name=".ui.checkout.CheckoutActivity"/>
         <activity android:name=".ui.confirmation.OrderConfirmationActivity" />
+        <activity android:name=".ui.login.SignupLogin" />
+        <activity android:name=".ui.menu.ProductsActivity" />
     </application>
 
 </manifest>
